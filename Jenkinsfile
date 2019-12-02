@@ -24,5 +24,17 @@ pipeline {
                 }
             }
         }
+        
+        stage('Deploy'){
+            steps{
+               bat '''
+               JENKINS_JOB_WS='/var/lib/jenkins/jobs/dev/workspace'
+               CATALINA_HOME='/usr/share/apache-tomcat-8.0.23'
+               WEB_APPS_DIR=$CATALINA_HOME'/webapps'
+               WEB_APP=$WEB_APPS_DIR'/fre'
+               echo JENKINS_JOB_WS
+               '''
+            }
+        }
     }
 }
